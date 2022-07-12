@@ -7,6 +7,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+button {
+  align-items: center;
+}
+
 .page {
   padding: 8mm 8mm 8mm 12mm;
 }
@@ -146,7 +150,6 @@ body {
   text-align: justify;
 }
 
-button {
-  margin: 0 auto;
-  display: block;
+.footer {
+  text-align: center;
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
@@ -7,10 +8,11 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private authServise: AuthService) {}
+  constructor(private authServise: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
   backToForm() {
     this.authServise.logout();
+    this.router.navigate(['/']);
   }
 }
