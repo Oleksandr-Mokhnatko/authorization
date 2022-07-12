@@ -1,0 +1,58 @@
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Enter Email and Password</h2>
+    <mat-error>{{ message }}</mat-error>
+    <div class="form-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.hasError('required')"
+          >Enret email</mat-error
+        >
+        <mat-error *ngIf="form.get('email')?.hasError('email')"
+          >Enret correct email. Like "example@mail.com"</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hidePass ? 'password' : 'text'"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <button mat-icon-button matSuffix (click)="changePassState($event)">
+          <mat-icon>{{ hidePass ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.hasError('required')"
+          >Enret password</mat-error
+        >
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')"
+          >Password is to short
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Confirm password"
+          formControlName="confPassword"
+        />
+
+        <mat-error *ngIf="form.get('confPassword')?.hasError('required')"
+          >Confirm password</mat-error
+        >
+        <mat-error
+          *ngIf="form.hasError('notmatched') && form.get('confPassword')?.value"
+          >Confirmed password doesn't match
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-flat-button color="primary" type="submit">Submit</button>
+  </form>
+</div>
